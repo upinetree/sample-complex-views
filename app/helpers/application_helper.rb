@@ -18,4 +18,9 @@ module ApplicationHelper
 
     button_tag(content, disabled: disabled, class: ['btn', class_name])
   end
+
+  def button_class(color = nil)
+    color_class = color ? "btn-#{color}" : 'btn-green'
+    ['btn', color_class]
+  end
 end

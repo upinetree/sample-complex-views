@@ -1,18 +1,56 @@
+h1 Complex helper
+
 - @comments.each do |comment|
   div
     p = comment.body
     = basic_button_tag '更新', color: :blue, record: comment
     = basic_button_tag '強制更新', color: :red, record: comment, force_enable: true
 
+- @posts.each do |post|
+  div
+    p = post.body
+    = basic_button_tag '更新', color: :blue, record: post
+    = basic_button_tag '強制更新', color: :red, record: post, force_enable: true
+
+div
+  = basic_button_tag '新規作成'
+
 hr
+
+h1 Simple helper
+
+- @comments.each do |comment|
+  div
+    p = comment.body
+    = button_tag '更新', class: button_class(:blue), disabled: comment.locked?
+    = button_tag '強制更新', class: button_class(:red)
 
 - @posts.each do |post|
   div
     p = post.body
-    = basic_button_tag '更新', color: :red, record: post
-    = basic_button_tag '強制更新', color: :red, record: post, force_enable: true
-
-hr
+    = button_tag '更新', class: button_class(:blue), disabled: !post.created_at.today?
+    = button_tag '強制更新', class: button_class(:red)
 
 div
-  = basic_button_tag '新規作成', color: :yellow
+  = button_tag '新規作成', class: button_class
+
+
+sass:
+  .btn
+    border-radius: 3px
+
+  .btn:disabled
+    opacity: .5
+    box-shadow: none
+
+  .btn-green
+    background-color: green
+    color: white
+
+  .btn-blue
+    background-color: blue
+    color: white
+
+  .btn-red
+    background-color: red
+    color: white
