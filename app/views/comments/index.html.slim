@@ -1,0 +1,18 @@
+- @comments.each do |comment|
+  div
+    p = comment.body
+    = basic_button_tag '更新', color: :blue, record: comment
+    = basic_button_tag '強制更新', color: :red, record: comment, force_enable: true
+
+hr
+
+- @posts.each do |post|
+  div
+    p = post.body
+    = basic_button_tag '更新', color: :red, record: post
+    = basic_button_tag '強制更新', color: :red, record: post, force_enable: true
+
+hr
+
+div
+  = basic_button_tag '新規作成', color: :yellow
